@@ -1,0 +1,1018 @@
+/*共通*/
+$breakpoints: (
+//キー値
+  'sp': 'screen and (max-width: 767px)', //767px以下用の表示
+  'pc': 'screen and (min-width: 1800px)', //1800px以上（タブレット・PC）用の表示
+  'middle-pc': 'screen and (max-width: 1800px)' ,//1800px以下用の表示
+  'mini-pc': 'screen and (max-width: 1300px)' ,
+  'ipad': 'screen and (max-width: 1272px)' ,
+  'ipad-mini': 'screen and (max-width: 970px)' ,
+  'mini-sp': 'screen and (max-width: 316px)',
+  'sp-ipad': 'screen and (max-width: 767px) and (min-width: 415px)',
+  'sp-feature': 'screen and (max-width: 414px)',
+  'mini-sp2': 'screen and (max-width: 279px)',
+) !default;
+
+//メディアクエリ用のmixinを定義。デフォ値はsp
+@mixin mq($breakpoint: sp) {
+//map-get(マップ型変数, キー)で値を取得
+  @media #{map-get($breakpoints, $breakpoint)} {
+    //この中をカスタムできる
+    @content;
+  }
+}
+
+html{
+    font-size: 62.5%; 
+}
+
+p{
+    font-family: "source-han-sans-japanese", sans-serif;
+    font-weight: 700;
+    font-style: normal;
+}
+
+.manual-steps{
+    text-align: center;
+}
+
+.manual-titles{
+    color: #3D7FC2;
+    font-size: 3.5rem;
+    margin-bottom: 10rem;
+    letter-spacing: 0.8rem;
+
+    @include mq(ipad-mini){
+        font-size: 2.5rem;
+        letter-spacing: 0.5rem;
+    }
+
+    @include mq(sp){
+        font-size: 1.5rem;
+        letter-spacing: 0.2rem;
+        margin-bottom: 3rem;
+    }
+
+    @include mq(mini-sp){
+        font-size: 1.2rem;
+    }
+
+    
+
+    span{
+        font-size: 4rem;
+        font-family: "interstate", sans-serif;
+        font-weight: 700;
+        font-style: italic;
+        margin-right: 1rem;
+        position: relative;
+
+        @include mq(ipad-mini){
+            font-size: 3rem;
+            margin-right: 2rem;
+        }
+
+        @include mq(sp){
+            font-size: 2rem;
+            margin-right: 1rem;
+        }
+
+        @include mq(mini-sp){
+            font-size: 1.5rem;
+            margin-right: 0.5rem;
+        }
+        
+    }
+
+    span::after{
+        background-image: url(../img/wave.png);
+        background-size: 20px;
+        content: "";
+        background-repeat: no-repeat;
+        background-size: contain;
+        display: inline-block; 
+        width: 60px;
+        height: 20px;
+        position: absolute;
+        left: -3px;
+        top: 50px;
+
+
+        @include mq(ipad-mini){
+            width: 50px;
+            left: -2px;
+            top: 35px;
+        }
+
+        @include mq(sp){
+            width: 28px;
+            left: -2px;
+            top: 24px;
+        }
+
+        @include mq(mini-sp){
+            width: 20px;
+            left: 0px;
+            top: 18px;
+        }
+    }
+
+    
+
+    @include mq(pc){
+        margin-bottom: 15rem;
+        font-size: 6rem;
+    }
+}
+.target-title{
+    color:#3D7FC2;
+    font-size: 3rem;
+    margin-bottom: 5rem;
+    letter-spacing: 0.8rem;
+
+    @include mq(pc){
+        margin-bottom: 8rem;
+        font-size: 5rem;
+    }
+
+    @include mq(sp){
+        font-size: 2rem;
+        margin-bottom: 3rem;
+        letter-spacing: 0.5rem;
+    }
+}
+
+
+.big-text{
+    font-size: 2.5rem;
+    margin-bottom: 2rem;
+    margin-top: 2rem;
+    font-family: "interstate", sans-serif;
+    font-weight: 700;
+    font-style: normal;
+    letter-spacing: 0.5rem;
+    color: #313131;
+
+    @include mq(pc){
+        margin-bottom: 3rem;
+        margin-top: 3rem;
+        font-size: 3.5rem;
+    }
+
+    @include mq(ipad-mini){
+        font-size: 2rem;
+    }
+
+    @include mq(sp){
+        font-size: 1.6rem;
+        margin-bottom: 1.5rem;
+    }
+}
+
+.mini-text{
+    font-size: 1.8rem;
+    width: 80%;
+    margin: 3rem auto;
+    letter-spacing: 0.2rem;
+    line-height: 2.8rem;
+    text-align: center;
+    color: #313131;
+
+    @include mq(pc){
+        margin: 5rem auto;
+    }
+
+    @include mq(ipad-mini){
+        font-size: 1.5rem;
+        line-height: 2.5rem;
+        margin: 3rem auto;
+    }
+
+    @include mq(sp){
+        font-size: 1.2rem;
+        letter-spacing: 0.1rem;
+        line-height: 2rem;
+        margin: 1.5rem auto;
+        width: auto;
+        padding: 0 5%;
+    }
+}
+
+.left-texts{
+    text-align: left;
+}
+
+.manual-left{
+    border-right: 5px solid #999;
+    width: 50%;
+}
+
+.manual-right,.manual-left{
+    width: 50%;
+    img{
+        //width: 414px;
+        //height: 896px;
+        width: 35%;
+
+        @include mq(mini-pc){
+            //width: 70%;
+        }
+
+        @include mq(ipad-mini){
+            //width: 70%;
+        }
+    }
+    .manual-arrow{
+        width: 60px;
+        height: 60px;
+
+        @include mq(ipad-mini){
+            width: 50px;
+            height: 50px;
+        }
+
+        @include mq(sp){
+            width: 40px;
+            height: 40px;
+        }
+    }
+}
+
+.manual-container{
+    display: flex;
+}
+
+.continuity-img{
+    display: block;
+    margin: 0 auto;
+}
+
+.manual-arrow-continuity{
+    margin: 2rem auto;
+}
+
+.pc-manual{
+    @include mq(sp){
+        display: none;
+    }
+}
+
+.sp-left{
+    @include mq(sp){
+        text-align: left;
+    }
+}
+
+.sp-center{
+    @include mq(sp){
+        text-align: center;
+    }
+}
+/*header*/
+
+header{
+    background-image: url(../img/manual-header-img.png) !important;
+}
+
+
+/*manual-top*/
+
+.manual-top{
+    .manual-texts{
+        background-image: url(../img/manual-top-img.png);
+        padding: 210px 0px;
+        background-repeat: no-repeat;
+        background-position: center;
+        position: relative;
+        top: -10vw;
+        background-size: contain;
+
+        @include mq(ipad-mini){
+            padding: 160px 0px;
+        }
+
+        @include mq(mini-sp){
+            padding: 100px 0px;
+        }
+    }
+
+   
+
+    p{
+        color: #3D7FC2;
+        letter-spacing: 1rem;
+    }
+
+    .manual-text-big{
+        font-size: 6rem;
+
+        @include mq(ipad-mini){
+            font-size: 5rem;
+        }
+
+        @include mq(sp){
+            font-size: 2.5rem;
+            letter-spacing:1rem;
+        }
+
+        @include mq(mini-sp){
+            font-size: 2rem;
+            letter-spacing: 0.5rem;
+        }
+
+        span{
+            font-size: 5rem;
+
+            @include mq(ipad-mini){
+                font-size: 4rem;
+            }
+
+            @include mq(sp){
+                font-size: 2rem;
+            }
+
+            @include mq(mini-sp){
+                font-size: 1.5rem;
+            }
+        }
+    }
+
+    .manual-text-mini{
+        font-size: 5rem;
+
+        @include mq(ipad-mini){
+            font-size: 4rem;
+        }
+
+        @include mq(sp){
+            font-size: 2.3rem;
+            letter-spacing: 0.3rem;
+        }
+
+        @include mq(mini-sp){
+            font-size: 1.7rem;
+            letter-spacing: 0.1rem;
+        }
+    }
+}
+.top{
+    padding-bottom: 0px;
+}
+/*manual step1*/
+.manual-step1{
+    background-repeat:no-repeat  !important;
+    background-size: auto !important;
+    background-color: #DBFCF5;
+
+    .back-img-step1{
+        text-align: right;
+
+        img{
+            width: 20%;
+
+            @include mq(pc){
+                width: 18%;
+            }
+        }
+    }    
+
+    .manual-back-img{
+        position: relative;
+        z-index: -10;
+        img{
+            width: 100%;
+        }
+    }
+}
+
+.about{
+        .pc-img,.sp-img{
+            top: 0px !important;
+        }
+
+        background-image: unset;
+
+        .back-img-right{
+
+            img{
+                width: 10%;
+            }
+
+            @include mq(ipad-mini){
+                img{
+                    width: 10%;
+                }
+            }
+
+            @include mq(sp){
+                .sp-img{
+                    width: 8%;
+                }
+            }
+        }
+
+        .about-left-img{
+            @include mq(ipad-mini){
+                img{
+                    width: 6%;
+                }
+            }
+
+            @include mq(sp){
+                img{
+                    width: 5% !important;
+                }
+            }
+        }
+
+        .back-img-left{
+            img{
+                width: 10%;
+            }
+
+            @include mq(ipad-mini){
+                img{
+                    width: 12%;
+                }
+            }
+
+            @include mq(sp){
+                .img{
+                    width: 5% !important;
+                }
+            }
+        }
+}
+/*
+.manuals{
+
+    
+
+    .manual-left{
+        float: left;
+    }
+
+    .manual-right{
+        float: right;
+    }
+
+    .back-img-step1{
+        text-align: right;
+
+        img{
+            width: 30%;
+        }
+    }
+
+}
+*/
+
+/*step2*/
+
+.manual2{
+    background-color: #FFFEEF;
+    
+
+    .manual2-back-img{
+        img{
+            width: 100%;
+            background-color: #DBFCF5;
+        }
+    }
+
+    .manual2-left-img{
+        position: absolute;
+        text-align: left;
+        z-index: -1;
+        img{
+            width: 20%;
+
+            @include mq(sp){
+                width: 10%;
+            }
+        }
+
+    }
+
+
+    .step2-back-img2{
+        text-align: left;
+        img{
+            width: 20%;
+        }
+        
+    }
+
+    .manual2-right-img{
+        text-align: right;
+        img{
+            width: 20%;
+            position: relative;
+            top: -90vw;
+            z-index: -1;
+        }
+    }
+
+    .manual-right,.manual-left{
+        position: relative;
+        z-index: 10;
+    }
+}
+
+/*step3*/
+
+.manual3{
+    background-color: #C0E8F5;
+    .manual3-back-img{
+        img{
+            width: 100%;
+        }
+    }
+
+    .manual-left{
+        position: relative;
+        z-index: 10;
+    }
+
+    .manual3-left-img{
+        position: relative;
+        top: -15%;
+        text-align: left;
+        z-index: -1;
+        img{
+            width: 15%;
+            position: absolute;
+
+            @include mq(sp){
+                width: 10%;
+            }
+        }
+    }
+}
+
+/*manual4*/
+
+.manual4{
+    background-color: #FFFEEF;
+    .manual4-back-img{
+        img{
+            width: 100%;
+        }
+    }
+
+    .mypageーflex{
+        display: flex;
+        justify-content: center;
+
+        img{
+            width:70%;
+        }
+
+        @include mq(sp){
+            width: 35%;
+        }
+    }
+
+    .manual4-right-img{
+        text-align: right;
+
+        img{
+            width: 20%;
+
+            @include mq(sp){
+                width: 15%;
+            }
+        }
+    }
+}
+
+/*manual5*/
+
+.manual5{
+    background-color: #DBFCF5;
+
+    .manual5-back-img{
+        img{
+            width: 100%;
+        }
+    }
+
+    .manual5-intro{
+        font-size: 2rem;
+        text-align: left;
+        width: 80%;
+        margin: 0 auto;
+        line-height: 4rem;
+        margin-bottom: 6rem;
+        letter-spacing: 0.5rem;
+
+        @include mq(sp){
+            width: 95%;
+            font-size: 1.2rem;
+            line-height: 1.9rem;
+            margin-bottom: 3rem;
+            letter-spacing: 0.2rem;
+        }
+    }
+
+    .main-texts{
+        .manual5-main-title{
+            font-size: 3rem;
+            color: #3D7FC2;
+            text-align: center;
+            margin-bottom: 1.5rem;
+            letter-spacing: 0.5rem;
+
+            @include mq(sp){
+                font-size: 1.5rem;
+            }
+        }
+
+        .main-text{
+            font-size: 2rem;
+            text-align: center;
+            color: #313131;
+            line-height: 5rem;
+            letter-spacing: 0.4rem;
+            text-align: left;
+
+
+            @include mq(sp){
+                font-size: 1.2rem;
+                line-height: 1.9rem;
+                margin-bottom: 1.5rem;
+                letter-spacing: 0.2rem;
+            }
+        }
+    }
+
+    .manuals{
+        width: 80%;
+        margin: 0 auto;
+        padding-bottom: 6rem;
+
+        @include mq(sp){
+            width: 95%;
+            padding-bottom: 3rem;
+        }
+    }
+
+    .mail-host,.mail-user{
+        margin-bottom: 1.5rem;
+
+        @include mq(sp){
+            margin-bottom: 1rem;
+        }
+    }
+    
+    .mail-text{
+        margin-bottom: 2rem;
+
+        @include mq(sp){
+            letter-spacing: 0.2rem;
+        }
+    }
+
+    .mail-text-user{
+        margin-bottom: 0px;
+    }
+
+    .mail-text-examples{
+        margin-bottom: 0px;
+    }
+
+    .qa_items {
+        margin: 3rem auto 0;
+        max-width: 100%;
+        font-family: "source-han-sans-japanese", sans-serif;
+        font-weight: 700;
+        font-style: normal;
+      }
+      
+      .qa__item {
+        margin-bottom: 3rem;
+      }
+      
+      .qa__item:last-child {
+        margin-bottom: 0;
+      }
+      
+      .accordion__q {
+        margin: 0;
+        background: #3D7FC2;
+        color: #fff;
+        padding: 15px 56px;
+        position: relative;
+        font-size: 2rem;
+        cursor: pointer;
+        text-align: left;
+        font-family: "source-han-sans-japanese", sans-serif;
+        font-weight: 600;
+        font-style: normal;
+        letter-spacing: 0.3rem;
+        
+        @include mq(sp){
+            font-size: 1rem;
+            line-height: 2.8rem;
+            padding: 6px 25px;
+            letter-spacing: 0.2rem;
+            padding-right: 0px;
+        }
+
+        @include mq(mini-sp){
+            font-size: 1rem;
+            line-height: 1.5rem;
+            padding: 9px 20px;
+            padding-left: 20px;
+            text-align: left;
+            font-weight: 500;
+            letter-spacing: 0.1rem;
+        }
+      }
+      
+      .accordion__q::before {
+        content: "Q.";
+        position: absolute;
+        left: 20px;
+        font-weight: 600;
+        color: #fff;
+        font-size: 2rem;
+        top: 50%;
+        transform: translateY(-50%);
+
+        @include mq(sp){
+            font-size: 1rem;
+            left: 5px;
+        }
+
+        @include mq(mini-sp){
+            font-weight: 500;
+        }
+      }
+      
+      .accordion__a {
+        margin: 0;
+        background: #DBFCF5;
+        display: none;
+        border: 3px solid #3D7FC2;
+        font-weight: 600;
+      }
+      
+      .accordion__a-in {
+        padding: 12px 30px 14px 56px;
+        line-height: 1.3;
+        color: #3D7FC2;
+        position: relative;
+        font-size: 2rem;
+        letter-spacing: 0.2rem;
+        text-align: left;
+
+        @include mq(sp){
+            font-size: 1rem;
+            padding: 12px 30px 14px 56px;
+            padding-left: 30px;
+            text-align: left;
+        }
+
+        @include mq(mini-sp){
+            font-size: 1rem;
+            padding: 12px 30px 14px 56px;
+            padding-left: 20px;
+            text-align: left;
+        }
+      }
+      
+      @media (max-width: 767px) {
+        .accordion__a-in {
+          padding-right: 22px;
+        }
+      }
+      
+      .accordion__a-in::before {
+        content: "A.";
+        position: absolute;
+        left: 20px;
+        font-weight: 600;
+        top: 14px;
+        font-size: 2rem;
+
+        @include mq(sp){
+            font-size: 1rem;
+            left: 5px;
+            top: 10px;
+        }
+      }
+      
+      .accordion__icon {
+        width: 20px;
+        height: 20px;
+        background: transparent url(../img/plus-img.png) no-repeat center center/contain;
+        position: absolute;
+        right: 14px;
+        top: 50%;
+        -webkit-transform: translateY(-50%);
+                transform: translateY(-50%);
+
+        @include mq(sp){
+            width: 10px;
+            height: 10px;
+        }
+      }
+      
+      .accordion__icon.is-open {
+        background-image: url(../img/minus-img.png);
+      }
+      
+}
+
+
+/*footer*/
+footer{
+    background-color: #DBFCF5;
+    background-image: url(../img/footer-manual-img2.png);
+    //background-size: contain;
+
+    @include mq(pc){
+        padding-top: 20vw;
+    }
+
+    @include mq(middle-pc){
+        background-size: 100% 100%;
+        background-repeat: no-repeat;
+        padding-top: 20vw;
+        padding-bottom: 4rem;
+    }
+
+
+    @include mq(sp){
+        background-image: url(../img/footer-manual-sp.png);
+        padding-top: 0rem;
+        .footer-list ul {
+            margin: 0px;
+            padding: 10%;
+        }
+    }
+
+    @include mq(mini-sp){
+        background-size: cover;
+    }
+}
+
+
+
+
+/*spのみ*/
+
+.sp-manual{
+    display: none;
+    background-color: #FFFEEF;
+    
+
+    @include mq(sp){
+        display: inline-block;
+        position: relative;
+    }
+
+    .tab-group{
+        margin:  0 10%;
+      }
+      .tab{
+        flex-grow: 1;
+        padding:5px;
+        list-style:none;
+        border:solid 2px #3D7FC2;
+        border-radius: 1000px;
+        text-align:center;
+        cursor:pointer;
+        background:#FFFEEF;
+        color:#3D7FC2;
+        font-size: 1.8rem;
+        font-family: "source-han-sans-japanese", sans-serif;
+        font-weight: 700;
+        font-style: normal;
+    
+        @include mq(mini-sp){
+            font-size: 1.3rem;
+            font-weight: 500;
+        }
+      }
+      .panel-group{
+        height:auto;
+        border:none;
+        background:#eee;
+      }
+      .panel{
+        display:none;
+      }
+      .tab.is-active{
+        background:#3D7FC2;
+        color:#FFFEEF;
+        transition: all 0.2s ease-out;
+        position: relative;
+      }
+    
+      .is-active::after{
+        content: "";
+        position: absolute;
+        width: 20px;
+        height: 20px;
+        background-image: url(../img/arrow.png);
+        background-size: contain;
+        z-index: 20;
+        transform: rotate(90deg) translateX(-50%);
+        top: 51%;
+        right: 20px;
+    
+        @include mq(mini-sp){
+            width: 15px;
+            height: 15px;
+            right: 10px;
+        }
+      }
+      .panel.is-show{
+        display:block;
+      }
+    
+      .tab-host{
+        margin-bottom: 30px;
+      }
+    
+
+    .manual-left{
+        border-right: none;
+        width: 100%;
+    }
+
+    .manual-right{
+        width: 100%;
+    }
+
+    .mypageーflex{
+        display: inline-block;
+        justify-content: unset;
+        width: auto;
+
+        img{
+            width: 35%;
+        }
+    }
+
+   
+    
+
+    .manual3-left-img,.step2-back-img2,.back-img-step1,.manual4-right-img{
+        img{
+            position: absolute;
+        }
+    }
+
+    .manual4-right-img{
+        position: relative;
+
+        img{
+            right: 0px;
+            top: -300px;
+            width: 11%;
+        }
+        
+    }
+
+    .step2-back-img2{
+        img{
+            width: 13%;
+        }
+    }
+
+    .manual2-right-img{
+        img{
+            width: 10%;
+        }
+    }
+
+    .back-img-step1{
+
+
+        position: relative;
+
+        img{
+            right: 0px;
+            top: -500px;
+            z-index: -1;
+            width: 15%;
+        }
+    }
+
+    .manual5,.manual4,.manual3,.manual2{
+        .manual-titles{
+            position: relative;
+            z-index: 10;
+        }
+    }
+
+    .manual5,.manual4{
+        p{
+            position: relative;
+            z-index: 10;
+        }
+    }
+}
